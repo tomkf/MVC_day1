@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+@{
+    Layout = null;
+}
+@Html.Raw(ViewData["my_message"])
+<br />
+@Html.Raw(ViewData["my_number"])
+<br />
+@{
+    int i = 0;
+    int val = Convert.ToInt32(ViewData["reps"]);
+
+    do
+    {
+        @Html.Raw(ViewData["fname"] + " " + ViewData["lname"]);
+        <br />
+        @Html.Raw(ViewData["email"]);
+        <br />
+        i++;
+    } while (i <= val);
+}
+<br />
+<br />
+<!-- Show ViewBag properties -->
+@Html.Raw(ViewBag.MyVariableProperty)
+<br />
+@{
+    var names = ViewBag.MyViewBagList;
+    @Html.Raw("<br />");
+    foreach (string name in names)
+    {
+        <text>@Html.Raw(name)</text>
+        <br />
+    }
+}
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<partial name="Partials/_LinksPartial" />
